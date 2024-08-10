@@ -16,26 +16,44 @@ Annual GDP of the United States from 1929 to 2023
 (5 rows and 96 columns)
 
 ## Data Cleaning
-Data extracted from data sources was cleaned and transformed using numpy and pandas tools together with Python and merged into one dataframe. 
+Data extracted from data sources was cleaned and transformed using numpy and pandas tools together with Python and merged into one dataframe. The dependent feature was identified as 'popularity' and the other features: genre, danceability, loudness,acousticness, instrumentalness,tempo and duration were identified as  independent features.
+The distribution of the dependent feature was left skewed with along tail.
+
+![image](https://github.com/user-attachments/assets/177b091b-bb63-4e74-960b-ebf8fc1d0883)
+
 
 ## Exploratory Data Analysis
-Merged dataframe was analyzed to detect trends and correlations with features and also between dependent feature(popularity) and other independent features using data visualization tools such as matplotlib and seaborn will be used to visualize results of the analysis. 
+Merged dataframe was analyzed to detect trends and correlations with features and also between dependent feature(popularity) and other independent features using data visualization tools such as matplotlib and seaborn. Line plots and and a heatmap was generated to visualize results of the analysis. 
+
 Finding included:
-1. Instrumentalness does not mean loud song
-   ![image](https://github.com/user-attachments/assets/b260951e-5d9f-425e-a385-482e08205d42)
 
-2. Long songs are not popular songs
-   ![image](https://github.com/user-attachments/assets/06795d27-fbbf-4ada-b278-0d136b7a4f03)
+1. EDA showed that the song feature, instrumentalness, was not related to loudness and this is evident from the lineplot.
+ 
+   ![image](https://github.com/user-attachments/assets/7c68c110-6d66-42ce-8cf3-f426848a3980)
 
-3. Popular songs have low acousticness
-   ![image](https://github.com/user-attachments/assets/7c3341a1-bfb5-4c14-947c-b7ca1ca7fb81)
+
+2. Songs with longer durations are not popular songs and this is shown in the graph below
+
+   ![image](https://github.com/user-attachments/assets/0534b6bc-285f-46f2-95d9-9e0021f91129)
+
+
+3. EDA also showed that popular songs have low acousticness
+
+   ![image](https://github.com/user-attachments/assets/faf363d6-e467-426f-b934-c8590a15b9d4)
+
 
 4. Most popular song genre is pop
-  #### The genres of the first 20 most popular songs
-  ![image](https://github.com/user-attachments/assets/84367611-d8cd-40df-a258-abe56ecf1f55)
+   
+  #### The most popular song genre was pop and this was evident from the first 20 most popular song list shown below
+
+  ![image](https://github.com/user-attachments/assets/a404f4a7-d024-4051-932c-0999034d0dba)
+
+
   
 ### Heatmap
-![image](https://github.com/user-attachments/assets/d8c88ea6-989a-4df8-b5a1-f93651ddb430)
+
+![image](https://github.com/user-attachments/assets/a5f320f6-78a5-4d98-ae8a-13977fbad6e9)
+
 
  From the Heatmap above, popularity is:
 a. not correlated to tempo
@@ -43,38 +61,62 @@ b. weakly correlated to danceability and loudness.
 c. negatively corelated to acousticness, liveness,instrumentalness, duration_min, GDP_year, GDP
 d. strongly correlated to year
 
+### Muticollinearity detection from the heatmap
+The heat map also revealed strong relationships between some of the independent features.
+
+1. Acousticness vrs loudness
+
+   ![image](https://github.com/user-attachments/assets/607ce93f-66dd-4f0a-8255-b65f4c881952)
+
+
+2. Instrumentalness and loudness
+   
+   ![image](https://github.com/user-attachments/assets/0c12864b-7f2e-44c6-9ac5-daf8a5b284d5)
+
+
+4. GDP year vrs GDP
+   
+ ![image](https://github.com/user-attachments/assets/f5aa0a25-27fb-44ec-86a7-f297e8527286)
+
+
 ## Modelling
-Three models were built after categorical feature were transformed into numerical features with OneHotEncoder and numerical columns were scaled with StandardScaler. The performance of each model was assess
+Four models were built after categorical feature were transformed into numerical features with OneHotEncoder and numerical columns were scaled with StandardScaler. Three were linear models and one was a non_linear model.
 
-1. Ridge Regression
-   
-![image](https://github.com/user-attachments/assets/6574b079-483b-46da-b3ad-fece7d2fed76)
-
-2. ElasticNet
-   
-![image](https://github.com/user-attachments/assets/31832a1a-5340-4d6d-aa8f-341e03272b32)
-
-3. DecisionTree Regressor
-   
-![image](https://github.com/user-attachments/assets/564c8c9d-89dd-49bd-8122-9796c4ff84c0)
+1. Ridge Regression  2. ElasticNet 3. DecisionTree Regressor 4. Random Forest( non_linear)
+  
 
 ## Model Evaluation
-After using cross validation to fit each model. Below is the perfromance observed
 
-The best model is the Ridge Regression model
+After using cross validation to fit  and assess the three linear models built,  Ridge Regression model showed the highest r2 value when compared to the other models. This indicates that the model works better than all the other models evaluated at this stage of the project. It also showed the lowest MAE and MSE scores and this indicates reveals that it performs with minimal errors compared to the other models evaluated.
 
-### Observations during model creation
-While developing the models, it was observed that dropping categorical feature (genre) from the feature list used to build the model makes the model perform poorer whwereas building models with all the features in the dataset improves model performance
 
-## Recommendations
-1. The popularity of songs is influenced by the year song was posted on Spotify. Spotify songs have gained more popularity in recent years than they did in previous years.
-![image](https://github.com/user-attachments/assets/8242d75d-2a9e-4460-81d4-2fb533c01e64)
+![image](https://github.com/user-attachments/assets/2dbbcdf1-d840-4cf5-abb3-3dd04cca838f)  ![image](https://github.com/user-attachments/assets/f958ef67-15f8-403f-a351-efb522c1e82c)
 
-2. Tempo does not influence song popularity
-![image](https://github.com/user-attachments/assets/6f3f453b-bbc0-4cf9-9b7b-e8c273da6231)
 
-## Further work
-Further work on this project must focus on improving the current model by increasing the data.
+The Random Forest moddel  with 8 n_estimators performed poorly. It  showed very low accuracy and F1 scores.The area under the curve was 0.21 which signifies that model is performing poorly.
+
+![image](https://github.com/user-attachments/assets/4386b846-9c8d-43c3-8da7-50c0bd009fbd)
+
+
+These graphs show that the best model is the Ridge Regression model because it has the highest R-squared score and the lowest Mean absolute error(MAE) and Mean squared error(MSE).
+
+### Ridge model improvement
+The current performance of the Ridge Model shows that although the Ridge model is the best model built so far for this project, there is more  room for improvement. Increasing number of features in the data could improve model performance significantly.
+
+![image](https://github.com/user-attachments/assets/7740e753-fba7-4dac-aeeb-bc35822a34af)
+
+
+
+## Important features of Ridge Model.
+
+All the features in that data were equally important to the Ridge model. This further indicates that increasing data volume and features could lead to better model performance.
+Acquiring more data will improve the robustness of model ,e nhance generalizations and lead to better feature engineering while offering deeper insights
+
+![image](https://github.com/user-attachments/assets/be15ace8-7c2a-4da5-9324-5f9bfaeceb79)
+
+
+
+
 
 
 
