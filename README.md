@@ -43,9 +43,10 @@ Finding included:
 
 4. Most popular song genre is pop
    
-  #### The most popular song genre was pop and this was evident from the first 20 most popular song list shown below
+  #### The most popular song genre was pop and this was evident from the hiatogram of the first 20 most popular songs.
 
-  ![image](https://github.com/user-attachments/assets/a404f4a7-d024-4051-932c-0999034d0dba)
+  ![image](https://github.com/user-attachments/assets/2d2d7f50-ad54-48f8-884a-688ae81439c1)
+
 
 
   
