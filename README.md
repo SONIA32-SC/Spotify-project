@@ -75,7 +75,7 @@ The heat map also revealed strong relationships between some of the independent 
 
 4. GDP year vrs GDP
    
- ![image](https://github.com/user-attachments/assets/f5aa0a25-27fb-44ec-86a7-f297e8527286)
+   ![image](https://github.com/user-attachments/assets/f5aa0a25-27fb-44ec-86a7-f297e8527286)
 
 
 ## Modelling
