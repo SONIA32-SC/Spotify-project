@@ -16,7 +16,7 @@ Annual GDP of the United States from 1929 to 2023
 (5 rows and 96 columns)
 
 ## Data Cleaning
-Data extracted from data sources was cleaned and transformed using numpy and pandas tools together with Python and merged into one dataframe. The dependent feature was identified as 'popularity' and the other features: genre, danceability, loudness,acousticness, instrumentalness,tempo and duration were identified as  independent features.
+Data extracted from data sources was cleaned and transformed using numpy and pandas tools together with Python and merged into one dataframe. After data wrangling the resultaing features were genre, danceability, loudness,acousticness, instrumentalness,tempo,year, popularity, duration,GDP year and GDP. Popularity is  tthe dependent feature.
 The distribution of the dependent feature was left skewed with along tail.
 
 ![image](https://github.com/user-attachments/assets/177b091b-bb63-4e74-960b-ebf8fc1d0883)
